@@ -21,7 +21,7 @@ When a developer wants to deploy a smart contract, the transaction is broadcaste
 3. Lower latency if the node is located in the same geographical location
 
 
-Lets start by signing up for a free 14 day trial [here]("https://console.chainstack.com/").
+Lets start by signing up for a free 14 day trial [here](https://console.chainstack.com/).
 
 Click on "Get Started" and you will be lead to the next page:
 ![alt text](../challenge/assets/images/1.PNG "Image failed to load")
