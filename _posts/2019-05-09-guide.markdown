@@ -1,0 +1,261 @@
+---
+layout: post
+title:  "Quick And Drty"
+date:   2019-05-08 19:29:18 +0800
+categories: Guide
+author: Syahrul Nizam
+---
+
+# Start your own Ethereum node and deploy smart contracts in under 10 minutes
+
+Deploying a smart contract in 2019 is easier than you think it is. By combining a popular framework
+called Embark and using Chainstack's infrastructure to quickly deploy Ethereum Nodes on the Mainnet, it makes smart contract deployment a breeze.
+
+
+## Spinning up your Ethereum node
+
+When a developer wants to deploy a smart contract, the transaction is broadcasted to a node. The developer has to trust that the remote node is perfectly honest. On the other hand, running your own Ethereum node has benefits:
+
+1. No throttling for high usage
+2. You can ensure that all transactions made to the blockchain are correct
+3. Lower latency if the node is located in the same geographical location
+
+
+Lets start by signing up for a free 14 day trial [here]("https://console.chainstack.com/").
+
+Click on "Get Started" and you will be lead to the next page:
+![alt text](https://i.imgur.com/xLktrkC.png "Image failed to load")
+
+We'll call our project Embark, choosing the "Public Chain" as our network type. You can add a description but thats not neccessary.
+
+Next, choose "Get Started" in the projects page and choose Ethereum, and select the Blockchain Network as Mainnet.
+![alt text](https://i.imgur.com/NcW2uW6.png "Image failed to load")
+
+Hit the next button to configure our personal ethereum node. Choosing a shared Node type deployed on Google Cloud Platform will suffice for the time being. If you decide to purchase a subscription beyond the 14 day trial, you'll get more options to help you scale your node. Thankfully, since you only pay for what you use for, you can easily experiment with the different node specifications for a low cost.
+![alt text](https://imgur.com/yhtgtBW.png "Image failed to load")
+
+At the summary page, hit "Join network". Wola! You just created your own Ethereum node.
+![alt text](https://imgur.com/yMuSPE5.png "Image filed to load")
+
+Nodes participating in a blockchain holds a local copy of the Blockchain in storage. Since the Ethereum Blockchain is over 200GBs large, it will take some time for the node to be ready. Luckily, the team over at Chainstack did some magic - so the whole process will only take about 10 minutes.
+
+## Set-up Embark
+To deploy a smart contract onto the Ethereum Network, we will be using Embark. Before installing Embark ensure that you have these dependencies installed:
+
+[Geth](https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum)
+
+[Node.js & npm](https://nodejs.org/en/download/)
+
+Once geth and npm is installed we can finally install embark:
+
+```
+npm -g install embark
+```
+
+Sweet, we now have the Embark framework installed.
+
+Once you've installed these dependencies, lets get started on deploying our Smart Contract to our remote node!
+## Smart Contracts
+
+Here's a simple smart contract that I've written to allow the asset tokenization of the Lisa Mona, a very expensive piece of artwork. Since the Lisa Mona costs 100 Trillion Dollars, no one on earth can afford it. So we would like to register the Lisa Mona as a token on the Ethereum Virtual machine, and then allow anyone from the internet to send Ether and get a fraction of that token. Thus, it becomes possible to own 1/1000 pieces of the Lisa Mona without cutting it up into pieces :) Let's call this contract art.sol.
+
+### art.sol
+
+```
+pragma solidity = 0.5.0;
+
+contract Art {
+	uint public supply;
+	uint public pricePerEth;
+
+	mapping (address  => uint) public balance;
+
+	constructor() public{
+		supply = 3; // since we only have one Lisa Mona :)
+		pricePerEth = 3; // price determines the number of
+		                                      //total price in ETH for the 1 complete lisa mona
+                                          //this is in wei, so 1 Lisa Mona = 3 Ethers
+	}
+
+	function buy() external payable {
+		balance[msg.sender] += msg.value/100000000000000000;
+	}
+
+	function price() external view returns(uint) {
+	    return pricePerEth;
+	}
+
+	function check() public view returns (uint) {
+		return balance[msg.sender];
+	}
+
+	function transfer(address _to,uint _value) public {
+		//check if sender has enough
+		require(balance[msg.sender] >= _value );
+		//protect against over flows
+		require(balance[_to] + _value > balance[_to]);
+		balance[msg.sender] -= _value;
+		balance[_to] = _value;
+	}
+
+}
+```
+
+We set to the price of one Lisa Mona to 3 Ethers.
+
+Save the code above as art.sol. We will be deploying art.sol to the Ethereum Mainnet via our Chainstack node.
+## Smart Contract Deployment
+
+On our local machine, lets create a new embark project.
+
+```
+embark new Art
+cd Art
+```
+Remember the smart contract that we designed earlier called art.sol? Copy art.sol
+into the /contracts folder of your embark project.
+
+```
+cp \path\to\art.sol .\contracts
+```
+
+We're ready to deploy our contract! But wait, how do we make embark connect to
+our Chainstack node? First let's create the wallet which will deploy the contract
+to the network:
+```
+geth account new
+```
+Follow the instructions to create your new account. For this tutorial, we will be using a keystore file.
+You can get the path to the keystore file by typing:
+```
+geth account list
+```
+This generates the addresses you have created along with the path to the respective keystore files.
+
+Let's assume that the keystore file is at ```/PATH/TO/KEYSTORE/UTC-123.123```
+for the rest of the tutorial.
+
+# Connecting to our Chainstack node
+Now go to your control panel in Chainstack and get the RPC and WS endpoints. If you have forgot
+how to do that,simply log in to chain stack and then navigate to your projects page.Click on your project
+called Embark. Following that,click on your network name, and in the next page choose the node that you
+want to connect to. It should bring you to this page:
+![alt text](https://imgur.com/qFZBOwg.png "Image failed to load")
+Take note of the RPC and WS endpoints at the end.
+
+The file ```contract.js``` contains the environment configurations. Let's create one for this tutorial and call the configuration ```chainstack```. Copy the code below and append it to the end of ```contracts.js```, before the *last* curly brackets.
+Be sure to change the variables for ```privateKeyFile```,```password``` and ```host``` accordingly.
+
+```
+...
+chainstack: {
+    // Blockchain node to deploy the contracts
+    deployment: {
+      accounts: [
+        {
+           privateKeyFile: "/PATH/TO/KEYSTORE/UTC-123.123",
+           password:"YOUR_WALLET_PASSWORD"
+        }
+      ],
+      host: "YOUR_CHAINSTACK_RPC_ENDPOINT", // Host of the blockchain node
+      port: false, // Port of the blockchain node
+      protocol:'https',
+      type: 'rpc'
+    },
+    dappConnection: [
+      "$WEB3",
+      "ws://localhost:8546",
+      "http://localhost:8545"
+    ],
+    gas: "auto"
+  }
+...
+```
+
+We're all set. To deploy the contract run the code below in the root of the project directory.
+```
+embark run chainstack
+```
+The ```chainstack``` argument after ```run``` tells embark to use the ```chainstack``` config in ```contracts.js```.
+
+What do you think will happen? Not surprisingly, you get this error in the Embark Console:
+```
+Returned Error:Insufficient Funds for gas*price + value
+```
+Our Chainstack node is running on the mainnet, so that means that the account needs to have REAL Ether!!!
+Since this is just a tutorial, lets not waste precious Ether. Embark comes with a nice trick to allow you to test your smart contracts without deployment to the Mainnet.
+
+## Running on a local 'mini' Blockchain
+
+We'll be using a simulated blockchain. Embark makes this easy:
+```
+embark simulator
+```
+
+In another terminal window execute ```embark run```. By not specifying the config parameter after ```run```, the default deployment configuration in ```contracts.js``` is used.
+
+The terminal should show this:
+![alt text](https://imgur.com/JJzMrSA.png "Failed to load Image")
+
+That's it! Our Asset Tokenization of the Lisa Mona is now deployed on our own blockchain.
+
+## Function calls
+
+Let's pretend that the smart contract is deployed on the Mainnet using our Chainstack node so that we
+can interact with it.
+
+Recall that we have these functions in the smart contract, and i've commented what they do:
+
+```
+check()    \\ get how many 'mini' Lisa Monas that the current account owns
+price()    \\ get the price of 1 Lisa Mona in Eth
+transfer() \\transfer ownership of 'mini' Lisa Monas to another address
+```
+
+We've set the price of 1 Lisa Mona to be 3 Ethers.Let's get this value from the smart contract.
+
+In the embark console,lets call the ```price()``` function.
+
+Embark uses Web3Js 1.x, so to call a ```view function``` such as ```price()```, follow the format below:
+```
+Art.methods.price().call() //returns 3
+```
+
+
+## Transferring Ether & Checking balance
+
+To check how many 'mini' Lisa Monas that your address owns, we can use the ```check()``` function.
+Lets type this code now into the Embark console:
+```
+Art.methods.check().call() //returns 0
+```
+As expected, since we haven't sent any Ethers to the contract, the value 0 is returned.
+
+Before we can send some Ether, we'll need two things:
+1. Our wallet address that we want to send Ethers from
+2. The address of the deployed contract
+
+Copy the code snippet below and enter it into the Embark Console:
+```
+object = {
+           "from":"YOUR_WALLET_ADDRESS",
+           "to":"CONTRACT_ADDRESS",
+           "value":"1000000000000000",
+           "gas":"100000"
+         }
+```
+The object above results in exactly 1 Ether being spent to the smart contract. This is specified in the ```value``` argument. To broadcast the transaction, run the command:
+```
+Art.methods.buy().send(object)
+```
+Let's check the number of 'mini' Lisa Monas that we now own.
+```
+Art.methods.check().call() //return 1
+```
+We get a non-zero value now. Congratulations, you've deployed & interacted with your first smart contract!
+
+## Conclusion
+
+While we did our tests using the simulated blockchain, you can simply deploy the same contract on the Mainnet using ```embark run chainstack```. I hope that you had fun with deploying the Lisa Mona smart contract. To read more on Chainstack and the different blockchain options that is available for hobbyist/enterprise use, head over to Chainstack's [documentation](https://docs.chainstack.com/).
+
+At Chainstack we're always looking for ways to improve, so drop us a message anytime.

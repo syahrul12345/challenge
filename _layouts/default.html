@@ -1,0 +1,11 @@
+<html>
+{% include head.html %}
+
+{% for post in site.posts %}
+  <html>
+    <div>
+      {{post.content}}
+    </div>
+  </html>
+{% endfor %}
+</html>
