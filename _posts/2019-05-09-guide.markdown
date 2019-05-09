@@ -199,7 +199,7 @@ embark simulator
 In another terminal window execute ```embark run```. By not specifying the config parameter after ```run```, the default deployment configuration in ```contracts.js``` is used.
 
 The terminal should show this:
-![alt text](../challenge/assets/images/7.png "Failed to load Image")
+![alt text](../assets/images/7.png "Failed to load Image")
 
 That's it! Our Asset Tokenization of the Lisa Mona is now deployed on our own blockchain.
 
