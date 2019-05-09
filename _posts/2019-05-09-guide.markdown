@@ -24,18 +24,18 @@ When a developer wants to deploy a smart contract, the transaction is broadcaste
 Lets start by signing up for a free 14 day trial [here]("https://console.chainstack.com/").
 
 Click on "Get Started" and you will be lead to the next page:
-![alt text](../assets/images/1.PNG "Image failed to load")
+![alt text](../challenge/assets/images/1.PNG "Image failed to load")
 
 We'll call our project Embark, choosing the "Public Chain" as our network type. You can add a description but thats not neccessary.
 
 Next, choose "Get Started" in the projects page and choose Ethereum, and select the Blockchain Network as Mainnet.
-![alt text](../assets/images/2.PNG "Image failed to load")
+![alt text](../challenge/assets/images/2.PNG "Image failed to load")
 
 Hit the next button to configure our personal ethereum node. Choosing a shared Node type deployed on Google Cloud Platform will suffice for the time being. If you decide to purchase a subscription beyond the 14 day trial, you'll get more options to help you scale your node. Thankfully, since you only pay for what you use for, you can easily experiment with the different node specifications for a low cost.
-![alt text](../assets/images/3.PNG "Image failed to load")
+![alt text](../challenge/assets/images/3.PNG "Image failed to load")
 
 At the summary page, hit "Join network". Wola! You just created your own Ethereum node.
-![alt text](../assets/images/4.PNG "Image filed to load")
+![alt text](../challenge/assets/images/4.PNG "Image filed to load")
 
 Nodes participating in a blockchain holds a local copy of the Blockchain in storage. Since the Ethereum Blockchain is over 200GBs large, it will take some time for the node to be ready. Luckily, the team over at Chainstack did some magic - so the whole process will only take about 10 minutes.
 
@@ -140,7 +140,7 @@ Now go to your control panel in Chainstack and get the RPC and WS endpoints. If 
 how to do that,simply log in to chain stack and then navigate to your projects page.Click on your project
 called Embark. Following that,click on your network name, and in the next page choose the node that you
 want to connect to. It should bring you to this page:
-![alt text](../assets/images/6.PNG "Image failed to load")
+![alt text](../challenge/assets/images/6.PNG "Image failed to load")
 Take note of the RPC and WS endpoints at the end.
 
 The file ```contract.js``` contains the environment configurations. Let's create one for this tutorial and call the configuration ```chainstack```. Copy the code below and append it to the end of ```contracts.js```, before the *last* curly brackets.
@@ -195,7 +195,7 @@ embark simulator
 In another terminal window execute ```embark run```. By not specifying the config parameter after ```run```, the default deployment configuration in ```contracts.js``` is used.
 
 The terminal should show this:
-![alt text](../assets/images/7.PNG "Failed to load Image")
+![alt text](../challenge/assets/images/7.PNG "Failed to load Image")
 
 That's it! Our Asset Tokenization of the Lisa Mona is now deployed on our own blockchain.
 
