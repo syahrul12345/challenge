@@ -119,7 +119,7 @@ Let's also copy the keystore file to the project directory so we can easily impo
 
 Now let's import the keystore file into Metamask:
 
-![alt-text](https://syahrul12345.github.io/challenge/assets/images/metamask.PNG)
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/metamask.png)
 
 Copy the address of the wallet and claim some ropsten ethers here : https://faucet.ropsten.be/
 
@@ -168,7 +168,7 @@ The ```chainstack``` argument after ```run``` tells embark to use the ```chainst
 
 Your terminal should display something like this:
 
-![alt-text](https://syahrul12345.github.io/challenge/assets/images/deployed.PNG)
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/deployed.png)
 
 Congratulations, you've successfully deployed your own contract.
 
@@ -186,7 +186,7 @@ You'll be prompted for the login token. Simply go to your terminal an type ```to
 
 You'll now be at the contract page of the Smart Contract which you just deployed. Feel free to click on any of the functions and experiment. 
 
-![alt-text](https://syahrul12345.github.io/challenge/assets/images/function.PNG)
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/function.png)
 
 ### Sending some Ethers to the smart contract
 
