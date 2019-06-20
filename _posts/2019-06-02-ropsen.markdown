@@ -74,9 +74,15 @@ Chainstack makes it easy to create a Ropsten testnet node. Normally this can tak
 
 We’ll call our project Embark, choosing the ‘Public Chain’ as our project type (naturally, because we are dealing with Ethereum, which is a public chain). Click ‘Create’, and you have your project ready. Now click the Embark project listing to get the ‘Join network’ modal. This is where you will specify various parameters to join the Ethereum network.
 
-Follow the steps below to configure your own ropsen node
-![alt-text](https://syahrul12345.github.io/challenge/assets/images/createnode.gif)
+![alt-text]https://syahrul12345.github.io/challenge/assets/images/ropsten1.png)
 
+Hit ‘Next to configure our personal Ethereum node. Let's choose a shared node since that will be enough for this tutorial.
+
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/3.PNG)
+
+At the summary page, hit ‘Join network’, and wait to see Chainstack’s DevOps for blockchain weave its magic ! 
+
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/ropsten.PNG)
 
 Nodes participating in a blockchain hold a local copy of the blockchain in storage. In the case of Ethereum, close to 200GB of data synchronization will take place in the background so that you can become part of the Ethereum network with your own fully synced node. This might take a few minutes, but not hours or days as is common if you were to do it manually. When the node status changes to Running, you know you have arrived on Ethereum Mainnet without breaking a sweat.
 
