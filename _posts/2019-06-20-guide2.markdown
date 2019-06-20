@@ -19,7 +19,7 @@ npm install -g embark
 Also you should install metamask to simplify the interaction process later on.
 
 
-##Smart Contracts
+## Smart Contracts
 
 Fractional ownership of an extremely expensive piece of asset can be made possible via smart contracts.
 
