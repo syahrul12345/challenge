@@ -218,4 +218,4 @@ At Chainstack we’re always looking for ways to improve, so drop us a message a
 
 [Learn more](docs.chainstack.com)
 [Try chainstack on console.chainstack.com](console.chainstack.com)
-[Link to webinar]
+[Link to webinar](webinar.chainstack.com)
