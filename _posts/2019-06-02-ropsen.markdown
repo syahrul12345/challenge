@@ -195,7 +195,7 @@ Let's use the same Ethereum account which deployed Art.sol to send some Ethers a
 First let's check how many 'mini' Lisa Monas that we own. Just execute the check() function in Embark's cockpit. Not suprisingly, it returns the value of 0.
 ```
 check() //returns 0
-balance() //returns 1000
+supply() //returns 1000
 ```
 
 Now copy the address of the Smart Contract and send some Ethers to this address. Let's start by sending 0.1 Ether. 
@@ -206,7 +206,7 @@ Going back to Embark's cockpit, let's try calling the functions check() and supp
 
 ```
 check() //returns 1
-balance() //returns 999
+supply() //returns 999
 ```
 
 Voila! You've just purchased 1 'mini' Lisa Monas, and officially own exactly 1/1000 Lisa Mona. Congratulations, you've just deployed and interacted with your own smart contract!
