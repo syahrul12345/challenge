@@ -7,8 +7,8 @@ Deploying a smart contract these days is easier than you think. By combining a p
 
 Before starting this tutorial, you should install these dependencies:
 
-NodeJS & NPM
-Geth
+[NodeJS & NPM](https://nodejs.org/en/)
+[Geth](https://github.com/ethereum/go-ethereum/wiki/Installing-Geth)
 
 Once we've installed these dependencies, we can isntall embark
 ```
