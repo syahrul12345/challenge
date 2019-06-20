@@ -106,7 +106,7 @@ We're ready to deploy our contract. Buit how do we get Embark to connect to our 
 
 
 ```
-get account new
+geth account new
 ```
 
 Follow the instructions to create your new account. For this tutorial, we will be using a keystore file. You can get the path to the keystore file by typing:
