@@ -213,4 +213,9 @@ Voila! You've just purchased 1 'mini' Lisa Monas, and officially own exactly 1/1
 
 ## Conclusion
 
-By using popular frameworks such as embark combined with Chainstack's super fast node deployment process 
+I hope that this tutorial has helped you appreciate how easy it is to deploy smart contract using a popular framework such as Embark along with Chainstack's quick node deployment.
+At Chainstack we’re always looking for ways to improve, so drop us a message anytime.
+
+[Learn more](docs.chainstack.com)
+[Try chainstack on console.chainstack.com](console.chainstack.com)
+[Link to webinar]
