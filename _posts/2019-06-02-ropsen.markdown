@@ -76,6 +76,7 @@ We’ll call our project Embark, choosing the ‘Public Chain’ as our project 
 
 Follow the steps below to configure your own ropsen node
 
+![Creating ropsen gif here]()
 
 Nodes participating in a blockchain hold a local copy of the blockchain in storage. In the case of Ethereum, close to 200GB of data synchronization will take place in the background so that you can become part of the Ethereum network with your own fully synced node. This might take a few minutes, but not hours or days as is common if you were to do it manually. When the node status changes to Running, you know you have arrived on Ethereum Mainnet without breaking a sweat.
 
@@ -118,7 +119,7 @@ Let's also copy the keystore file to the project directory so we can easily impo
 
 Now let's import the keystore file into Metamask:
 
-![alt-text](https://imgur.com/tyfsl1f)
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/metamask.PNG)
 
 Copy the address of the wallet and claim some ropsten ethers here : https://faucet.ropsten.be/
 
@@ -167,7 +168,7 @@ The ```chainstack``` argument after ```run``` tells embark to use the ```chainst
 
 Your terminal should display something like this:
 
-![alt-text](https://imgur.com/Z8CndmQ)
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/deployed.PNG)
 
 Congratulations, you've successfully deployed your own contract.
 
@@ -185,7 +186,7 @@ You'll be prompted for the login token. Simply go to your terminal an type ```to
 
 You'll now be at the contract page of the Smart Contract which you just deployed. Feel free to click on any of the functions and experiment. 
 
-![alt-text](https://imgur.com/qMDiarT)
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/function.PNG)
 
 ### Sending some Ethers to the smart contract
 
@@ -199,7 +200,7 @@ balance() //returns 1000
 
 Now copy the address of the Smart Contract and send some Ethers to this address. Let's start by sending 0.1 Ether. 
 
-![alt-text]()
+![Sending gif here]() 
 
 Going back to Embark's cockpit, let's try calling the functions check() and supply().
 
