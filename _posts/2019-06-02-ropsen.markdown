@@ -136,6 +136,8 @@ Now go to the node details page in Chainstack, and get its RPC endpoint. If you 
 
 Take note of the RPC and WS endpoints at the end.
 
+![alt-text](https://syahrul12345.github.io/challenge/assets/images/endpoint.png)
+
 The file located ```/config/contracts.js``` contains the environment configurations. This file tells embark the node to connect to. Let's create one for this tutorial called ```chainstack```. Copy the code below and append it to the end of ```contracts.js``` before the last curly brackets. Be sure to change the variables for ```privateKeyfile```,```password``` and ```host``` accordingly.
 
 ```
