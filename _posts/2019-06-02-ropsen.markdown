@@ -7,7 +7,7 @@ Deploying a smart contract these days is easier than you think. By combining a p
 
 Before starting this tutorial, you should install these dependencies:
 
-[NodeJS & NPM] (https://nodejs.org/en/download/)
+[NodeJS & NPM](https://nodejs.org/en/download/)
 
 [Geth](https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum)
 
