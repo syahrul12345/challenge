@@ -69,9 +69,11 @@ Chainstack makes it easy to create a Ropsten testnet node. Normally this can tak
 
 Let's start by signing up for a free 14-day trial [here](https://console.chainstack.com).
 
-We’ll call our project Embark, choosing the ‘Public Chain’ as our project type (naturally, because we are dealing with Ethereum, which is a public chain). Click ‘Create’, and you have your project ready. Now click the Embark project listing to get the ‘Join network’ modal. This is where you will specify various parameters to join the Ethereum network.
+We’ll call our project Embark, choosing the ‘Public Chain’ as our project type (naturally, because we are dealing with Ethereum, which is a public chain). Click ‘Create’, and you have your project ready. 
 
 ![alt-text](https://syahrul12345.github.io/challenge/assets/images/1.PNG)
+
+Now click the Embark project listing to get the ‘Join network’ modal. This is where you will specify various parameters to join the Ethereum network.
 
 Hit ‘Next‘ to configure our personal Ethereum node. Let's choose a shared node since that will be enough for this tutorial.
 
